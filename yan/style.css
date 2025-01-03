@@ -20,34 +20,63 @@ body, html {
 
 .title {
     position: absolute;
-    top: 20px;
+    top: 2vh;
     left: 50%;
     transform: translateX(-50%);
     color: #FFD700; /* 金黄色 */
-    font-size: 48px;
+    font-size: 11vw; /* 使用视口宽度单位 */
     font-family: 'KaiTi', '楷体', serif; /* 使用楷体字体 */
-    text-shadow: 2px 2px 4px #FF0000; /* 红色阴影 */
+    text-shadow: 0.2vw 0.2vw 0.4vw #FF0000; /* 红色阴影 */
     z-index: 10; /* 确保标题在最上层 */
     background-color: rgba(37, 171, 108, 0.5); /* 半透明背景 */
-    padding: 10px 50px; /* 内边距 */
-    border: 2px solid #FFD700; /* 金黄色边框 */
-    border-radius: 10px 10px 90px 90px; /* 圆角边框 */
+    padding: 1vh 5vw; /* 内边距 */
+    border: 0.2vw solid #FFD700; /* 金黄色边框 */
+    border-radius: 1vw 1vw 9vw 9vw; /* 圆角边框 */
+    white-space: nowrap; /* 确保标题文字在一行 */
+}
+
+.countdown-container {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #FFD700; /* 金黄色 */
+    font-family: 'KaiTi', '楷体', serif; /* 使用楷体字体 */
+    z-index: 10; /* 确保倒计时在最上层 */
+}
+
+.countdown-title {
+    font-size: 6vw; /* 使用视口宽度单位 */
+    text-shadow: 0.2vw 0.2vw 0.4vw #FF0000; /* 红色阴影 */
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+    padding: 1vh 2vw; /* 内边距 */
+    border: 0.2vw solid #FFD700; /* 金黄色边框 */
+    border-radius: 1vw; /* 圆角边框 */
+    margin-bottom: 1vh;
 }
 
 .countdown {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* 水平和垂直居中 */
-    color: #FFD700; /* 金黄色 */
-    font-size: 72px; /* 更大的字体大小 */
-    font-family: 'KaiTi', '楷体', serif; /* 使用楷体字体 */
-    text-shadow: 2px 2px 4px #FF0000; /* 红色阴影 */
-    z-index: 10; /* 确保倒计时在最上层 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
-    padding: 20px 40px; /* 内边距 */
-    border: 2px solid #FFD700; /* 金黄色边框 */
-    border-radius: 10px; /* 圆角边框 */
+    padding: 2vh 4vw; /* 内边距 */
+    border: 0.2vw solid #FFD700; /* 金黄色边框 */
+    border-radius: 1vw; /* 圆角边框 */
+}
+
+#countdown-main {
+    display: inline-block; /* 确保主倒计时部分在一行 */
+    font-size: 6vw; /* 调整主倒计时的字体大小 */
+    text-shadow: 0.2vw 0.2vw 0.4vw #FF0000; /* 红色阴影 */
+    margin-top: 1vh;
+}
+
+#countdown-seconds {
+    display: inline-block; /* 确保秒数在同一行 */
+    font-size: 10vw; /* 调整秒数的字体大小 */
+    text-shadow: 0.2vw 0.2vw 0.4vw #FF0000; /* 红色阴影 */
 }
 
 .celebration-video {
@@ -59,4 +88,29 @@ body, html {
     width: 80%;
     height: auto;
     z-index: 20; /* 确保视频在最上层 */
+}
+
+/* 保持现有样式不变 */
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 15vw; /* 调整标题字体大小 */
+        padding: 1.5vh 5vw; /* 调整内边距 */
+    }
+
+    .countdown-title {
+        font-size: 10vw; /* 调整倒计时标题字体大小 */
+    }
+
+    #countdown-main {
+        font-size: 10vw; /* 调整主倒计时的字体大小 */
+    }
+
+    #countdown-seconds {
+        font-size: 12vw; /* 调整秒数的字体大小 */
+    }
+
+    .celebration-video {
+        width: 90%; /* 调整视频宽度 */
+    }
 }
