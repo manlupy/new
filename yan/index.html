@@ -8,7 +8,13 @@
 </head>
 <body>
     <h1 class="title">蛇年大吉</h1>
-    <div id="countdown" class="countdown"></div>
+    <div id="countdown-container" class="countdown-container">
+        <div class="countdown-title">距离跨年</div>
+        <div id="countdown" class="countdown">
+            <span id="countdown-seconds"></span>
+            <span id="countdown-main"></span>
+        </div>
+    </div>
     <canvas id="fireworksCanvas"></canvas>
     <video id="celebrationVideo" class="celebration-video" src="Videos\608223417.mp4" type="video/mp4" controls></video>
     <audio id="explosionSound" src="Videos\1月3日.MP3" type="audio/mp3"></audio>
