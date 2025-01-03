@@ -6,7 +6,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 // 倒计时目标时间
-const targetDate = new Date('2025-01-03T04:40:00').getTime();
+const targetDate = new Date('2025-01-03T20:50:00').getTime();
 
 // 标志变量，跟踪倒计时音效是否已经播放过
 let countdownSoundPlayed = false;
@@ -23,17 +23,20 @@ function updateCountdown() {
 
     if (distance < 0) {
         clearInterval(countdownInterval);
-        document.getElementById('countdown').innerHTML = "新年快乐！";
+        document.getElementById('countdown-main').innerHTML = "新年快乐！";
+        document.getElementById('countdown-seconds').innerHTML = "";
         playCelebrationVideo();
     } else if (distance <= 11000) { // 最后10秒
-        document.getElementById('countdown').innerHTML = `${seconds}秒`;
+        document.getElementById('countdown-main').innerHTML = "";
+        document.getElementById('countdown-seconds').innerHTML = `${seconds}秒`;
         if (!countdownSoundPlayed) {
             playCountdownSound();
             countdownSoundPlayed = true; // 设置标志变量为true，表示音效已经播放过
         }
     } else {
-        document.getElementById('countdown').innerHTML = 
-            `${days}天 ${hours}小时 ${minutes}分钟 ${seconds}秒`;
+        document.getElementById('countdown-main').innerHTML = 
+            `${days}天 ${hours}小时 ${minutes}分钟`;
+        document.getElementById('countdown-seconds').innerHTML = `${seconds}秒`;
     }
 }
 
