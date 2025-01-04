@@ -6,7 +6,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 // 倒计时目标时间
-const targetDate = new Date('2025-01-29T00:00:00').getTime();
+const targetDate = new Date('2025-01-05T00:50:00').getTime();
 
 // 标志变量，跟踪倒计时音效是否已经播放过
 let countdownSoundPlayed = false;
