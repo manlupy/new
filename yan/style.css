@@ -1,3 +1,4 @@
+/* 全局样式 */
 * {
     margin: 0;
     padding: 0;
@@ -9,6 +10,7 @@ body, html {
     overflow: hidden;
 }
 
+/* 烟花画布样式 */
 #fireworksCanvas {
     position: absolute;
     top: 0;
@@ -18,6 +20,7 @@ body, html {
     background-color: #000;
 }
 
+/* 标题样式 */
 .title {
     position: absolute;
     top: 2vh;
@@ -35,6 +38,7 @@ body, html {
     white-space: nowrap; /* 确保标题文字在一行 */
 }
 
+/* 倒计时容器样式 */
 .countdown-container {
     position: absolute;
     top: 60%;
@@ -46,6 +50,7 @@ body, html {
     z-index: 10; /* 确保倒计时在最上层 */
 }
 
+/* 倒计时标题样式 */
 .countdown-title {
     font-size: 6vw; /* 使用视口宽度单位 */
     text-shadow: 0.2vw 0.2vw 0.4vw #FF0000; /* 红色阴影 */
@@ -56,6 +61,7 @@ body, html {
     margin-bottom: 1vh;
 }
 
+/* 倒计时样式 */
 .countdown {
     display: flex;
     flex-direction: column;
@@ -79,6 +85,7 @@ body, html {
     text-shadow: 0.2vw 0.2vw 0.4vw #FF0000; /* 红色阴影 */
 }
 
+/* 庆祝视频样式 */
 .celebration-video {
     display: none; /* 初始隐藏 */
     position: absolute;
@@ -90,8 +97,40 @@ body, html {
     z-index: 20; /* 确保视频在最上层 */
 }
 
-/* 保持现有样式不变 */
+/* 装饰元素样式 */
+.decorations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* 确保装饰元素不影响用户交互 */
+}
 
+.lantern, .firecracker {
+    position: absolute;
+    animation: float 5s infinite alternate;
+}
+
+.lantern {
+    top: 20%;
+    left: 10%;
+    width: 10%;
+}
+
+.firecracker {
+    top: 20%;
+    right: 10%;
+    width: 10%;
+}
+
+/* 浮动动画 */
+@keyframes float {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+ 
+/* 响应式设计 */
 @media (max-width: 768px) {
     .title {
         font-size: 15vw; /* 调整标题字体大小 */
