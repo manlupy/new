@@ -6,7 +6,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 // 倒计时目标时间
-const targetDate = new Date('2025-01-03T20:55:00').getTime();
+const targetDate = new Date('2025-01-29T00:00:00').getTime();
 
 // 标志变量，跟踪倒计时音效是否已经播放过
 let countdownSoundPlayed = false;
@@ -194,6 +194,48 @@ class Firework {
     }
 }
 
+// 星星类
+class Star {
+    constructor(x, y, size, brightness) {
+        this.x = x;
+        this.y = y;
+        this.size = size;
+        this.brightness = brightness;
+        this.twinkleFactor = Math.random() * 0.05 + 0.01; // 闪烁因子
+    }
+
+    // 更新星星状态
+    update() {
+        this.brightness += this.twinkleFactor;
+        if (this.brightness >= 1 || this.brightness <= 0) {
+            this.twinkleFactor = -this.twinkleFactor; // 反转闪烁方向
+        }
+    }
+
+    // 绘制星星
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.brightness})`;
+        ctx.fill();
+    }
+}
+
+// 创建星星
+function createStars() {
+    const stars = [];
+    for (let i = 0; i < 200; i++) { // 增加星星的数量
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const size = Math.random() * 2;
+        const brightness = Math.random();
+        stars.push(new Star(x, y, size, brightness));
+    }
+    return stars;
+}
+
+const stars = createStars();
+
 // 存储烟花实例
 let fireworks = [];
 
@@ -226,6 +268,12 @@ function animate() {
     ctx.fillStyle = 'rgba(0, 0, 0, 0.2)'; // 半透明黑色背景，用于拖影效果
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+    // 更新并绘制星星
+    stars.forEach(star => {
+        star.update();
+        star.draw();
+    });
+
     fireworks.forEach((firework, index) => {
         firework.update();
         firework.draw();
@@ -235,7 +283,7 @@ function animate() {
     });
 
     // 定期生成烟花
-    if (Math.random() < 0.02) {
+    if (Math.random() < 0.05) {
         createFirework(Math.random() * canvas.width, canvas.height);
     }
 
